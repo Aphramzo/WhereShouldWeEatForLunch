@@ -39,7 +39,7 @@ namespace WhereShouldWeEatLunch.Controllers
 
         public ActionResult Create()
         {
-            var viewModel = CreateViewModelFromEntityModel(null);
+            var viewModel = CreateViewModelFromEntityModel(null, null);
             return View(viewModel);
 
         } 
@@ -51,17 +51,19 @@ namespace WhereShouldWeEatLunch.Controllers
         public ActionResult Create(EateryViewModel eaterymodel)
         {
 
-                db.EateryModels.Add(eaterymodel.Eatery);
-                db.SaveChanges();
-                return RedirectToAction("Index");  
+            var eatery = eaterymodel.Eatery;
+            eatery.FoodStyleModel = db.FoodStyleModels.FirstOrDefault(x => x.Id == eatery.FoodStyleModel.Id);
+            db.EateryModels.Add(eatery);
+            db.SaveChanges();
+            return RedirectToAction("Index");  
         }
 
-        private EateryViewModel CreateViewModelFromEntityModel(EateryModel eaterymodel)
+        private EateryViewModel CreateViewModelFromEntityModel(EateryModel eaterymodel, FoodStyleModel selected)
         {
             var viewModel = new EateryViewModel()
                                 {
                                     Eatery = eaterymodel,
-                                    Styles = new SelectList(db.FoodStyleModels.OrderBy(x => x.Name), "Id", "Name")
+                                    Styles = new SelectList(db.FoodStyleModels.OrderBy(x => x.Name), "Id", "Name", selected)
                                 };
             return viewModel;
         }
@@ -72,7 +74,8 @@ namespace WhereShouldWeEatLunch.Controllers
         public ActionResult Edit(int id)
         {
             EateryModel eaterymodel = db.EateryModels.Find(id);
-            return View(eaterymodel);
+            var viewModel = CreateViewModelFromEntityModel(eaterymodel, eaterymodel.FoodStyleModel);
+            return View(viewModel);
         }
 
         //
@@ -87,7 +90,8 @@ namespace WhereShouldWeEatLunch.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(eaterymodel);
+            var viewModel = CreateViewModelFromEntityModel(eaterymodel, eaterymodel.FoodStyleModel);
+            return View(viewModel);
         }
 
         //

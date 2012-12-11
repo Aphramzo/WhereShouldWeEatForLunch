@@ -30,10 +30,10 @@
             @Html.ValidationMessageFor(model => model.Eatery.Name)
         </div>
         <div class="editor-label">
-            @Html.LabelFor(model => model.Eatery.Style)
+            @Html.LabelFor(model => model.Eatery.FoodStyleModel)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.Eatery.Style, Model.Styles)
+            @Html.DropDownListFor(model => model.Eatery.FoodStyleModel.Id, Model.Styles)
         </div>
 
         <p>

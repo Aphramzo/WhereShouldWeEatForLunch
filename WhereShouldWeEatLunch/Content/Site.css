@@ -13,7 +13,7 @@ section {
     display: block;
 }
 
-/* Styles for basic forms
+/* FoodStyleModels for basic forms
 -----------------------------------------------------------*/
 
 fieldset 
@@ -45,7 +45,7 @@ textarea
 }
 
 
-/* Styles for validation helpers
+/* FoodStyleModels for validation helpers
 -----------------------------------------------------------*/
 .field-validation-error
 {
