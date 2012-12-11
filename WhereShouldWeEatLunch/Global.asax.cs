@@ -32,7 +32,9 @@ namespace WhereShouldWeEatLunch
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<Models.WhereShouldWeEatLunchContext>());
+
+            
+
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }

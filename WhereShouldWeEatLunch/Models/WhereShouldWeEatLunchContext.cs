@@ -13,6 +13,12 @@ namespace WhereShouldWeEatLunch.Models
         // 
         // System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<WhereFoodShouldWeEatLunch.Models.WhereShouldWeEatLunchContext>());
 
+        public WhereShouldWeEatLunchContext()
+        {
+            this.Database.Connection.ConnectionString =
+                "Server=820a774d-8122-4d90-93e2-a12401182188.sqlserver.sequelizer.com;Database=db820a774d81224d9093e2a12401182188;User ID=azsurtcqjwakvohi;Password=R8KqsCTBPRcRmRtvZ3SgtyErgBhiAdutzm35AFQDkrh7SvzNGNF7YjbrBsjXvJaL;";
+        }
+
         public DbSet<FoodStyleModel> FoodStyleModels { get; set; }
 
         public DbSet<EateryModel> EateryModels { get; set; }
