@@ -1,4 +1,4 @@
-﻿@model WhereShouldWeEatLunch.Models.EateryModel
+﻿@model WhereShouldWeEatLunch.Controllers.EateryController.EateryViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -12,22 +12,28 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>EateryModel</legend>
+        <legend>EateryyModel</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.IsWalkingDistance)
+            @Html.LabelFor(model => model.Eatery.IsWalkingDistance)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.IsWalkingDistance)
-            @Html.ValidationMessageFor(model => model.IsWalkingDistance)
+            @Html.EditorFor(model => model.Eatery.IsWalkingDistance)
+            @Html.ValidationMessageFor(model => model.Eatery.IsWalkingDistance)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            @Html.LabelFor(model => model.Eatery.Name)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
+            @Html.EditorFor(model => model.Eatery.Name)
+            @Html.ValidationMessageFor(model => model.Eatery.Name)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Eatery.Style)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Eatery.Style, Model.Styles)
         </div>
 
         <p>

@@ -13,8 +13,12 @@ namespace WhereShouldWeEatLunch.Controllers
     {
         private WhereShouldWeEatLunchContext db = new WhereShouldWeEatLunchContext();
 
-        //
-        // GET: /Eatery/
+
+        public class EateryViewModel
+        {
+            public EateryModel Eatery { get; set; }
+            public IEnumerable<SelectListItem> Styles;
+        }
 
         public ViewResult Index()
         {
@@ -35,25 +39,33 @@ namespace WhereShouldWeEatLunch.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var viewModel = CreateViewModelFromEntityModel(null);
+            return View(viewModel);
+
         } 
 
         //
         // POST: /Eatery/Create
 
         [HttpPost]
-        public ActionResult Create(EateryModel eaterymodel)
+        public ActionResult Create(EateryViewModel eaterymodel)
         {
-            if (ModelState.IsValid)
-            {
-                db.EateryModels.Add(eaterymodel);
+
+                db.EateryModels.Add(eaterymodel.Eatery);
                 db.SaveChanges();
                 return RedirectToAction("Index");  
-            }
-
-            return View(eaterymodel);
         }
-        
+
+        private EateryViewModel CreateViewModelFromEntityModel(EateryModel eaterymodel)
+        {
+            var viewModel = new EateryViewModel()
+                                {
+                                    Eatery = eaterymodel,
+                                    Styles = new SelectList(db.FoodStyleModels.OrderBy(x => x.Name), "Id", "Name")
+                                };
+            return viewModel;
+        }
+
         //
         // GET: /Eatery/Edit/5
  
