@@ -8,7 +8,7 @@
 {
     <fieldset>
         <legend>Where should we eat lunch today?</legend>
-        <div class="editor-label">Should we walk?</div>
+        <div class="editor-label"><label for="isWalkingDistance">Should we walk?</label></div>
         <div class="editor-field">@Html.CheckBox("isWalkingDistance", Model.IsWalkingDistance)</div>
         <div class="editor-label">What kind of food are you in the mood for?</div>
         <div class="editor-field">@Html.DropDownList("foodStyle",Model.Styles)</div>
