@@ -18,7 +18,7 @@ namespace WhereShouldWeEatLunch.Models
         [Display(Name = "Name")]
         public String Name { get; set; }
 
-        [Display(Name = "FoodStyleModel")]
+        [Display(Name = "Style")]
         public virtual FoodStyleModel FoodStyleModel { get; set; }
     }
 }

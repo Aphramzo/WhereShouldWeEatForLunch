@@ -82,16 +82,13 @@ namespace WhereShouldWeEatLunch.Controllers
         // POST: /Eatery/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(EateryModel eaterymodel)
+        public ActionResult Edit(EateryViewModel eaterymodel)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(eaterymodel).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            var viewModel = CreateViewModelFromEntityModel(eaterymodel, eaterymodel.FoodStyleModel);
-            return View(viewModel);
+            var eatery = eaterymodel.Eatery;
+            eatery.FoodStyleModel = db.FoodStyleModels.FirstOrDefault(x => x.Id == eatery.FoodStyleModel.Id);
+            db.Entry(eatery).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         //
