@@ -36,6 +36,10 @@ namespace WhereShouldWeEatLunch.Controllers
         {
             var isWalkingDistance = GetIsWalkingDistanceFromForm(values);
             var style = GetStyleFromForm(values);
+            //if style is null that means they dont care what they want
+            if (style == null)
+                style = new FoodStyleModel() { Id = 0 };
+
             viewModel.IsWalkingDistance = isWalkingDistance;
             viewModel.Eateries =
                 GetPossibleEateryList(isWalkingDistance, style);
@@ -45,7 +49,11 @@ namespace WhereShouldWeEatLunch.Controllers
 
         private List<EateryModel> GetPossibleEateryList(bool isWalkingDistance, FoodStyleModel style)
         {
-            return db.EateryModels.Where(x => x.IsWalkingDistance == isWalkingDistance && x.FoodStyleModel.Id == style.Id).OrderBy(c => c.Name).ToList();
+            var eateries = db.EateryModels.Where(x => x.IsWalkingDistance == isWalkingDistance);
+            if (style.Id != 0)
+                eateries = eateries.Where(x => x.FoodStyleModel.Id == style.Id);
+            
+            return eateries.OrderBy(c => c.Name).ToList();
         }
 
         private FoodStyleModel GetStyleFromForm(FormCollection values)
@@ -61,9 +69,9 @@ namespace WhereShouldWeEatLunch.Controllers
 
         private IEnumerable<SelectListItem> GetStyleListOptions(FoodStyleModel style)
         {
-            var styles = db.FoodStyleModels.OrderBy(x => x.Name).ToList();
-
-            return styles.Select(c=> new SelectListItem(){Value = c.Id.ToString(), Text = c.Name, Selected = style.Id == c.Id});
+            var styles = db.FoodStyleModels.ToList();
+            styles.Add(new FoodStyleModel(){Id=0, Name = "(anything)"});
+            return styles.OrderBy(x => x.Name).Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name, Selected = style.Id == c.Id });
         }
 
         private IEnumerable<SelectListItem> GetStyleListOptions()
