@@ -15,3 +15,11 @@
         </p>
     </fieldset>
 }
+
+@if (Model.SuggestedEatery != null)
+{
+    <fieldset>
+        <legend>Results</legend>
+        <div class="label">We recommend @Model.SuggestedEatery.Name</div>
+    </fieldset>
+}
