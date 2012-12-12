@@ -85,8 +85,11 @@ namespace WhereShouldWeEatLunch.Controllers
         public ActionResult Edit(EateryViewModel eaterymodel)
         {
             var eatery = eaterymodel.Eatery;
-            eatery.FoodStyleModel = db.FoodStyleModels.FirstOrDefault(x => x.Id == eatery.FoodStyleModel.Id);
-            db.Entry(eatery).State = EntityState.Modified;
+            var fromDB = db.EateryModels.Where(x => x.Id == eatery.Id).FirstOrDefault();
+            fromDB.Name = eatery.Name;
+            fromDB.IsWalkingDistance = eatery.IsWalkingDistance;
+            fromDB.FoodStyleModel = db.FoodStyleModels.Where(x=>x.Id == eatery.FoodStyleModel.Id).FirstOrDefault();
+            db.Entry(fromDB).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
