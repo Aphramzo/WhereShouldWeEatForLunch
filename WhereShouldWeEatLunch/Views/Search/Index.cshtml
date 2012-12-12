@@ -1,0 +1,17 @@
+﻿@model WhereShouldWeEatLunch.Controllers.SearchViewModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Where should we eat lunch today?</legend>
+        <div class="editor-label">Should we walk</div>
+        <div class="editor-field">@Html.CheckBox("isWalkingDistance", Model.IsWalkingDistance)</div>
+        <p>
+            <input type="submit" value="Tell us!" />
+        </p>
+    </fieldset>
+}
