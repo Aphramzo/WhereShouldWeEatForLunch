@@ -115,6 +115,12 @@ namespace WhereShouldWeEatLunch.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult FourSquareList()
+        {
+            var eateriesNearHere = APIs.FourSquare.FindEateriesNear("80121");
+            return View(eateriesNearHere);
+        }
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

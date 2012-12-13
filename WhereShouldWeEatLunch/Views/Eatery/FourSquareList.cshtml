@@ -1,0 +1,14 @@
+﻿@model List<String>
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>FourSquare Venues Near By</h2>
+
+<ul>
+    @foreach(var eatery in Model)
+    {
+        <li>@eatery</li>
+    }
+</ul>
