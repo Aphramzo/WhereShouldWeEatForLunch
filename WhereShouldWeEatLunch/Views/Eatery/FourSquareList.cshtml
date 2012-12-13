@@ -10,7 +10,7 @@
 }
 <h2>Powered By FourSquare</h2>
 <div class="editor-label">What kind of food are you in the mood for?</div>
-<div class="editor-field">@Html.DropDownList("foodStyle",Model.Categories)</div>
+<div class="editor-field">@Html.DropDownList("foodStyle",Model.Categories, new {Multiple = "multiple"})</div>
 <ul id="eateryList">
     <li>Waiting for location</li>
 </ul>
