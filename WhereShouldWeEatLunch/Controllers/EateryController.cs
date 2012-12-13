@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using WhereShouldWeEatLunch.Models;
 
 namespace WhereShouldWeEatLunch.Controllers
@@ -119,6 +120,15 @@ namespace WhereShouldWeEatLunch.Controllers
         {
             var eateriesNearHere = APIs.FourSquare.FindEateriesNear("80121");
             return View(eateriesNearHere);
+        }
+
+        public String FourSquareListByCoords()
+        {
+            var lat = Convert.ToDecimal(Request.Params["lat"]);
+            var lon = Convert.ToDecimal(Request.Params["long"]);
+            var eateriesNearHere = APIs.FourSquare.FindEateriesNearLatLong(lat, lon);
+            var json = new JavaScriptSerializer().Serialize(eateriesNearHere);
+            return json;
         }
 
         protected override void Dispose(bool disposing)
