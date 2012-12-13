@@ -53,6 +53,11 @@ function error_callback(p) {
 
 $(document).ready(function () {
     $('#foodStyle').change(function () {
-        loadFourSquareResults($(this).val().join());
+        //nasty way to deal with mobile leaving the anything selection on
+        var cats = $(this).val().join().trim();
+        if (cats.indexOf("0,") == 0) {
+            cats = cats.substring(2, cats.length);
+        }
+        loadFourSquareResults(cats);
     });
 });
