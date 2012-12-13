@@ -7,3 +7,4 @@ c:\users\twalborn\documents\visual studio 2010\Projects\WhereShouldWeEatLunch\Wh
 c:\users\twalborn\documents\visual studio 2010\Projects\WhereShouldWeEatLunch\WhereShouldWeEatLunch\obj\Debug\WhereShouldWeEatLunch.pdb
 c:\users\twalborn\documents\visual studio 2010\Projects\WhereShouldWeEatLunch\WhereShouldWeEatLunch\bin\Scripts\jquery-ui-setup.js
 c:\users\twalborn\documents\visual studio 2010\Projects\WhereShouldWeEatLunch\WhereShouldWeEatLunch\bin\SharpSquare.dll
+c:\users\twalborn\documents\visual studio 2010\Projects\WhereShouldWeEatLunch\WhereShouldWeEatLunch\bin\Scripts\geo-min.js
