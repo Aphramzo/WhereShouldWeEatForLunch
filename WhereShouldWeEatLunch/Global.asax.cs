@@ -24,7 +24,7 @@ namespace WhereShouldWeEatLunch
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Search", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Eatery", action = "FourSquareList", id = UrlParameter.Optional } // Parameter defaults
             );
 
         }
