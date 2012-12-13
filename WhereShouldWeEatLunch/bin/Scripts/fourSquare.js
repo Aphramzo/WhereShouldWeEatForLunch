@@ -3,7 +3,7 @@ var lon;
 
 function loadFourSquareResults(categoryId) {
     showWaiting();
-    $.getJSON('FourSquareListByCoords', {
+    $.getJSON('/eatery/FourSquareListByCoords', {
         lat: lat,
         long: lon,
         categoryId: categoryId
