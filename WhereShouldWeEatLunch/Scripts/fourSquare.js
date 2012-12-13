@@ -1,7 +1,8 @@
 ﻿var lat;
 var lon;
 
-function loadFourSquareResults (categoryId) {
+function loadFourSquareResults(categoryId) {
+    showWaiting();
     $.getJSON('FourSquareListByCoords', {
         lat: lat,
         long: lon,
@@ -39,7 +40,11 @@ function success_callback(p) {
     lon = p.coords.longitude.toFixed(3);
 
     loadFourSquareResults();
-    
+
+}
+
+function showWaiting() {
+    $('#eateryList').html('<li>Reticulating Splines.... Please Wait</li>');
 }
 
 function error_callback(p) {
@@ -48,6 +53,6 @@ function error_callback(p) {
 
 $(document).ready(function () {
     $('#foodStyle').change(function () {
-        loadFourSquareResults($(this).val());
+        loadFourSquareResults($(this).val().join());
     });
 });
