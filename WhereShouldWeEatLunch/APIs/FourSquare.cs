@@ -18,14 +18,20 @@ namespace WhereShouldWeEatLunch.APIs
             return venues.Select(x => x.name).ToList();
         }
 
-        public static List<Igloo.SharpSquare.Entities.Venue> FindEateriesNearLatLong(decimal lat, decimal lon)
+        public static List<Igloo.SharpSquare.Entities.Venue> FindEateriesNearLatLong(decimal lat, decimal lon, String categoryId)
         {
             SharpSquare sharpSquare = new SharpSquare(ConfigurationManager.AppSettings["fourSquareClientId"], ConfigurationManager.AppSettings["fourSquareClientSecret"]);
             var searchParams = new Dictionary<string, string>();
             searchParams.Add("ll", String.Format("{0},{1}",lat,lon));
-            //searchParams.Add("intent","browse");
+            if(!String.IsNullOrEmpty(categoryId))
+                searchParams.Add("categoryId", categoryId);
             var venues = sharpSquare.SearchVenues(searchParams);
             return venues;
+        }
+
+        public static object FindEateriesNearLatLong(decimal lat, decimal lon)
+        {
+            return FindEateriesNearLatLong(lat, lon, null);
         }
     }
 

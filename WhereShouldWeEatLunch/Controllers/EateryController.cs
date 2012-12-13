@@ -118,15 +118,14 @@ namespace WhereShouldWeEatLunch.Controllers
 
         public ActionResult FourSquareList()
         {
-            var eateriesNearHere = APIs.FourSquare.FindEateriesNear("80121");
-            return View(eateriesNearHere);
+            return View();
         }
 
         public String FourSquareListByCoords()
         {
             var lat = Convert.ToDecimal(Request.Params["lat"]);
             var lon = Convert.ToDecimal(Request.Params["long"]);
-            var eateriesNearHere = APIs.FourSquare.FindEateriesNearLatLong(lat, lon);
+            var eateriesNearHere = APIs.FourSquare.FindEateriesNearLatLong(lat, lon, Request.Params["categoryId"]);
             var json = new JavaScriptSerializer().Serialize(eateriesNearHere);
             return json;
         }
