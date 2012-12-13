@@ -1,5 +1,7 @@
-﻿
-function loadFourSquareResults (lat, lon, categoryId) {
+﻿var lat;
+var lon;
+
+function loadFourSquareResults (categoryId) {
     $.getJSON('FourSquareListByCoords', {
         lat: lat,
         long: lon,
@@ -9,7 +11,7 @@ function loadFourSquareResults (lat, lon, categoryId) {
         $('#eateryList').html = '';
         $.each(data, function (key, val) {
             if (val.categories[0])
-                items.push('<li id="' + key + '">' + val.name + '  (<a href="#" class="filterByCategory" data-category-id="' + val.categories[0].id + '">' + val.categories[0].name + '</a>)' + '</li>');
+                items.push('<li id="' + key + '">' + val.name + '  (<a href="#" data-role="button" class="filterByCategory" data-category-id="' + val.categories[0].id + '">' + val.categories[0].name + '</a>)' + '</li>');
             else {
                 items.push('<li id="' + key + '">' + val.name + '</li>');
             }
@@ -33,9 +35,10 @@ else {
 
 function success_callback(p) {
     //alert('lat=' + p.coords.latitude.toFixed(2) + ';lon=' + p.coords.longitude.toFixed(2));
+    lat = p.coords.latitude.toFixed(3);
+    lon = p.coords.longitude.toFixed(3);
 
-
-    loadFourSquareResults(p.coords.latitude.toFixed(3), p.coords.longitude.toFixed(3));
+    loadFourSquareResults();
     
 }
 
@@ -43,3 +46,8 @@ function error_callback(p) {
     alert('error=' + p.message);
 }
 
+$(document).ready(function () {
+    $('#foodStyles').change(function () {
+        loadFourSquareResults($(this).val());
+    });
+});
