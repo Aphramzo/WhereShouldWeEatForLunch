@@ -40,6 +40,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\SharpSquare.dll</HintPath>
     </Reference>
+    <Reference Include="SquishIt.Framework, Version=0.8.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\SquishIt.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Device" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -110,7 +114,24 @@
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="lib\ajax-minifier-license.txt" />
+    <Content Include="lib\AjaxMin.dll" />
+    <Content Include="lib\AjaxMin.pdb" />
+    <Content Include="lib\closure-compiler-license.txt" />
+    <Content Include="lib\dotless.Core.dll" />
+    <Content Include="lib\dotless_license.txt" />
+    <Content Include="lib\ecmascript-net-license.txt" />
+    <Content Include="lib\EcmaScript.NET.modified.dll" />
+    <Content Include="lib\jurassic-license.txt" />
+    <Content Include="lib\Jurassic.dll" />
     <Content Include="lib\SharpSquare.dll" />
+    <Content Include="lib\squishit-license.txt" />
+    <Content Include="lib\SquishIt.Framework.dll" />
+    <Content Include="lib\SquishIt.Framework.pdb" />
+    <Content Include="lib\SquishIt.Mvc.dll" />
+    <Content Include="lib\SquishIt.Mvc.pdb" />
+    <Content Include="lib\Yahoo.Yui.Compressor.dll" />
+    <Content Include="lib\yui-license.txt" />
     <Content Include="Scripts\fourSquare.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

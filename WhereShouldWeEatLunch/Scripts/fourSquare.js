@@ -17,10 +17,6 @@ function loadFourSquareResults(categoryId) {
 
         $('#eateryList').html(items.join(''));
 
-        $('.filterByCategory').click(function (e) {
-            var categoryId = $(this).attr('data-category-id');
-            loadFourSquareResults(lat, lon, categoryId);
-        });
     });
     }
 
@@ -33,8 +29,8 @@ else {
 
 function success_callback(p) {
     //alert('lat=' + p.coords.latitude.toFixed(2) + ';lon=' + p.coords.longitude.toFixed(2));
-    lat = p.coords.latitude.toFixed(3);
-    lon = p.coords.longitude.toFixed(3);
+    lat = p.coords.latitude;
+    lon = p.coords.longitude;
 
     loadFourSquareResults();
 
