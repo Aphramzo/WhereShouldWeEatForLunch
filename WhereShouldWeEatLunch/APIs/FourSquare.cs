@@ -25,7 +25,7 @@ namespace WhereShouldWeEatLunch.APIs
             SharpSquare sharpSquare = new SharpSquare(ConfigurationManager.AppSettings["fourSquareClientId"], ConfigurationManager.AppSettings["fourSquareClientSecret"]);
             var searchParams = new Dictionary<string, string>();
             searchParams.Add("ll", String.Format("{0},{1}",lat,lon));
-            if(!String.IsNullOrEmpty(categoryId))
+            if(!String.IsNullOrEmpty(categoryId) && categoryId != "0")
                 searchParams.Add("categoryId", categoryId);
             else
                 searchParams.Add("categoryId",String.Join(",",GetFoodCategoryList(sharpSquare)));

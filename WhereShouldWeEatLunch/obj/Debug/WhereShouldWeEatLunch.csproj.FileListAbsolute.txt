@@ -9,3 +9,14 @@ c:\users\twalborn\documents\visual studio 2010\Projects\WhereShouldWeEatLunch\Wh
 c:\users\twalborn\documents\visual studio 2010\Projects\WhereShouldWeEatLunch\WhereShouldWeEatLunch\bin\SharpSquare.dll
 c:\users\twalborn\documents\visual studio 2010\Projects\WhereShouldWeEatLunch\WhereShouldWeEatLunch\bin\Scripts\geo-min.js
 c:\users\twalborn\documents\visual studio 2010\Projects\WhereShouldWeEatLunch\WhereShouldWeEatLunch\bin\Scripts\fourSquare.js
+C:\Users\Aphramzo\Projects\WhereToEat\WhereShouldWeEatForLunch\WhereShouldWeEatLunch\bin\Scripts\fourSquare.js
+C:\Users\Aphramzo\Projects\WhereToEat\WhereShouldWeEatForLunch\WhereShouldWeEatLunch\bin\Scripts\geo-min.js
+C:\Users\Aphramzo\Projects\WhereToEat\WhereShouldWeEatForLunch\WhereShouldWeEatLunch\bin\Scripts\jquery-ui-setup.js
+C:\Users\Aphramzo\Projects\WhereToEat\WhereShouldWeEatForLunch\WhereShouldWeEatLunch\bin\WhereShouldWeEatLunch.dll
+C:\Users\Aphramzo\Projects\WhereToEat\WhereShouldWeEatForLunch\WhereShouldWeEatLunch\bin\WhereShouldWeEatLunch.pdb
+C:\Users\Aphramzo\Projects\WhereToEat\WhereShouldWeEatForLunch\WhereShouldWeEatLunch\bin\EntityFramework.dll
+C:\Users\Aphramzo\Projects\WhereToEat\WhereShouldWeEatForLunch\WhereShouldWeEatLunch\bin\SharpSquare.dll
+C:\Users\Aphramzo\Projects\WhereToEat\WhereShouldWeEatForLunch\WhereShouldWeEatLunch\bin\EntityFramework.xml
+C:\Users\Aphramzo\Projects\WhereToEat\WhereShouldWeEatForLunch\WhereShouldWeEatLunch\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Aphramzo\Projects\WhereToEat\WhereShouldWeEatForLunch\WhereShouldWeEatLunch\obj\Debug\WhereShouldWeEatLunch.dll
+C:\Users\Aphramzo\Projects\WhereToEat\WhereShouldWeEatForLunch\WhereShouldWeEatLunch\obj\Debug\WhereShouldWeEatLunch.pdb
