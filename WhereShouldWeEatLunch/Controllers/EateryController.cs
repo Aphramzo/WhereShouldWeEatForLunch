@@ -126,9 +126,9 @@ namespace WhereShouldWeEatLunch.Controllers
 
         public String FourSquareListByCoords()
         {
-            var lat = Convert.ToDecimal(Request.Params["lat"]);
-            var lon = Convert.ToDecimal(Request.Params["long"]);
-            var eateriesNearHere = APIs.FourSquare.FindEateriesNearLatLong(lat, lon, Server.UrlDecode(Request.Params["categoryId"]));
+            var lat = Convert.ToDouble(Request.Params["lat"]);
+            var lon = Convert.ToDouble(Request.Params["long"]);
+            var eateriesNearHere = APIs.FourSquare.FindEateriesNearLatLong(lat, lon, Server.UrlDecode(Request.Params["categoryId"])).OrderBy(x=>x.Distance);
             var json = new JavaScriptSerializer().Serialize(eateriesNearHere);
             return json;
         }

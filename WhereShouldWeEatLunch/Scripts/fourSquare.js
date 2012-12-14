@@ -10,9 +10,9 @@ function loadFourSquareResults(categoryId) {
     }, function (data) {
         var items = [];
         $('#eateryList').html = '';
-        var linkString = '<li id="{0}"><a href="http://maps.google.com/?daddr={2},{3}">{1}</a></li>';
+        var linkString = '<li id="{0}"><a href="http://maps.google.com/?daddr={2},{3}">{1}</a> ({4} mi.)</li>';
         $.each(data, function (key, val) {
-            items.push(linkString.format(key,val.name,val.location.lat,val.location.lng));
+            items.push(linkString.format(key,val.name,val.location.lat,val.location.lng,val.Distance.toFixed(2)));
         });
 
         $('#eateryList').html(items.join(''));

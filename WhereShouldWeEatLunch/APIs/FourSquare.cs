@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Device.Location;
 using System.Linq;
 using Igloo.SharpSquare.Core;
 using Igloo.SharpSquare.Entities;
@@ -20,7 +21,7 @@ namespace WhereShouldWeEatLunch.APIs
             return venues.Select(x => x.name).ToList();
         }
 
-        public static List<Venue> FindEateriesNearLatLong(decimal lat, decimal lon, String categoryId)
+        public static List<FourSquareVenue> FindEateriesNearLatLong(double lat, double lon, String categoryId)
         {
             SharpSquare sharpSquare = new SharpSquare(ConfigurationManager.AppSettings["fourSquareClientId"], ConfigurationManager.AppSettings["fourSquareClientSecret"]);
             var searchParams = new Dictionary<string, string>();
@@ -30,7 +31,7 @@ namespace WhereShouldWeEatLunch.APIs
             else
                 searchParams.Add("categoryId",String.Join(",",GetFoodCategoryList(sharpSquare)));
             var venues = sharpSquare.SearchVenues(searchParams);
-            return venues;
+            return venues.Select(x=>new FourSquareVenue(x, lat, lon)).ToList();
         }
 
         private static List<String> GetFoodCategoryList(SharpSquare sharpSquare)
@@ -52,11 +53,38 @@ namespace WhereShouldWeEatLunch.APIs
             return GetCategories(sharpSquare);
         }
 
-        public static object FindEateriesNearLatLong(decimal lat, decimal lon)
+        public static object FindEateriesNearLatLong(double lat, double lon)
         {
             return FindEateriesNearLatLong(lat, lon, null);
         }
     }
 
+    public class FourSquareVenue
+    {
+        public String name { get { return _venue.name; } }
+        public String id { get { return _venue.id; } }
+        public Location location { get { return _venue.location; } }
+        private Venue _venue { get; set; }
+        private double _currentLat { get; set; }
+        private double _currentLong { get; set; }
+        public FourSquareVenue(Venue venue, double currentLat, double currentLong)
+        {
+            _venue = venue;
+            _currentLat = currentLat;
+            _currentLong = currentLong;
+        }
+
+        public double Distance
+        {
+            get
+            {
+                var myCoords = new GeoCoordinate(_currentLat, _currentLong);
+                var venueCoords = new GeoCoordinate(_venue.location.lat, _venue.location.lng);
+
+                //getDistanceTo returns meters - I want to show miles
+                return myCoords.GetDistanceTo(venueCoords) * 0.000621371;   
+            }
+        }
+    }
     
 } ;
