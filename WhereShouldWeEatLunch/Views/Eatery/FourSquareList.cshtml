@@ -4,9 +4,15 @@
     ViewBag.Title = "title";
 }
 
-@section headerScripts
+@section js
 {
-    <script src="@Url.Content("~/Scripts/foursquare.js")" type="text/javascript"></script>   
+    <!--Cannot figure out why, but geo-min here doesnt like being bundled -->
+    <script src="@Url.Content("~/Scripts/geo-min.js")" type="text/javascript"></script>   
+    @MvcHtmlString.Create(
+        Bundle.JavaScript()
+        .Add("/Scripts/foursquare.js")
+        .Render("/Scripts/FourSquareList.js")
+    )
 }
 <h2>Powered By FourSquare</h2>
 <div class="editor-label">What kind of food are you in the mood for?</div>

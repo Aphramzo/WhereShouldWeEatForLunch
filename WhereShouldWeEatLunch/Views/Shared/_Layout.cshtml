@@ -1,22 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <title>@ViewBag.Title</title>
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
-    @MvcHtmlString.Create(
-        Bundle.JavaScript()
-        .Add("/Scripts/jquery-1.5.1.min.js")
-        .Add("/Scripts/jquery-ui-1.8.11.min.js")
-        .Add("/Scripts/jquery-ui-setup.js")
-        .Add("/Scripts/modernizr-1.7.min.js")
-        .Add("/Scripts/geo-min.js")
-        .Render("/Scripts/combine.js")
-    )
-    @RenderSection("js", false)
-    @RenderSection("headerScripts", false)
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
+    </head>
     <body>
         <nav data-role="navbar">
             <ul>
@@ -37,3 +26,12 @@
         
     </body>
 </html>
+@MvcHtmlString.Create(
+        Bundle.JavaScript()
+        .Add("/Scripts/jquery-1.5.1.min.js")
+        .Add("/Scripts/jquery-ui-1.8.11.min.js")
+        .Add("/Scripts/jquery-ui-setup.js")
+        .Add("/Scripts/modernizr-1.7.min.js")
+        .Render("/Scripts/combine.js")
+    )
+    @RenderSection("js", false)
