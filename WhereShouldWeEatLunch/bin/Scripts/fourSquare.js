@@ -10,12 +10,9 @@ function loadFourSquareResults(categoryId) {
     }, function (data) {
         var items = [];
         $('#eateryList').html = '';
+        var linkString = '<li id="{0}"><a href="http://maps.google.com/?daddr={2},{3}">{1}</a></li>';
         $.each(data, function (key, val) {
-            if (val.categories[0])
-                items.push('<li id="' + key + '">' + val.name + '  (<a href="#" data-role="button" class="filterByCategory" data-category-id="' + val.categories[0].id + '">' + val.categories[0].name + '</a>)' + '</li>');
-            else {
-                items.push('<li id="' + key + '">' + val.name + '</li>');
-            }
+            items.push(linkString.format(key,val.name,val.location.lng,val.location.lat));
         });
 
         $('#eateryList').html(items.join(''));
@@ -61,3 +58,13 @@ $(document).ready(function () {
         loadFourSquareResults(cats);
     });
 });
+
+String.prototype.format = function () {
+    var args = arguments;
+    return this.replace(/{(\d+)}/g, function (match, number) {
+        return typeof args[number] != 'undefined'
+      ? args[number]
+      : match
+    ;
+    });
+};
