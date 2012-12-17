@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>YelpSharp</id>
+    <version>1.0.0.2</version>
+    <title>YelpSharp</title>
+    <authors>Justin Beckwith</authors>
+    <owners>Justin Beckwith</owners>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>https://github.com/JustinBeckwith/YelpSharp</projectUrl>
+    <iconUrl>http://justinbeckwith.github.com/YelpSharp/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>YelpSharp is a .NET wrapper for the Yelp.com REST API</description>
+    <releaseNotes>Initial release of the API</releaseNotes>
+    <copyright>Copyright 2012</copyright>
+    <tags>REST API Social</tags>
+    <dependencies>
+      <dependency id="RestSharp" version="102.7" />
+    </dependencies>
+    <references>
+      <reference file="YelpSharp.dll" />
+    </references>
+  </metadata>
+</package>

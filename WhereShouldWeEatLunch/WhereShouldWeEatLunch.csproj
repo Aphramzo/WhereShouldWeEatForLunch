@@ -36,6 +36,13 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="SharpSquare, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\SharpSquare.dll</HintPath>
@@ -68,11 +75,17 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="YelpSharp, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\YelpSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIs\FourSquare.cs" />
     <Compile Include="APIs\JSONHelper.cs" />
+    <Compile Include="APIs\OAuthBase.cs" />
     <Compile Include="APIs\RESTfulAPI.cs" />
+    <Compile Include="APIs\Yelp.cs" />
     <Compile Include="Controllers\EateryController.cs" />
     <Compile Include="Controllers\FoodStyleController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -112,8 +125,10 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="GettingStarted.txt" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Json.NET.license.txt" />
     <Content Include="lib\ajax-minifier-license.txt" />
     <Content Include="lib\AjaxMin.dll" />
     <Content Include="lib\AjaxMin.pdb" />
@@ -124,6 +139,7 @@
     <Content Include="lib\EcmaScript.NET.modified.dll" />
     <Content Include="lib\jurassic-license.txt" />
     <Content Include="lib\Jurassic.dll" />
+    <Content Include="lib\Newtonsoft.Json.dll" />
     <Content Include="lib\SharpSquare.dll" />
     <Content Include="lib\squishit-license.txt" />
     <Content Include="lib\SquishIt.Framework.dll" />
@@ -131,6 +147,7 @@
     <Content Include="lib\SquishIt.Mvc.dll" />
     <Content Include="lib\SquishIt.Mvc.pdb" />
     <Content Include="lib\Yahoo.Yui.Compressor.dll" />
+    <Content Include="lib\YelpSharp.dll" />
     <Content Include="lib\yui-license.txt" />
     <Content Include="Scripts\fourSquare.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
