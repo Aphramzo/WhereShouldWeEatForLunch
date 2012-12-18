@@ -10,12 +10,14 @@ function loadFourSquareResults(categoryId) {
     }, function (data) {
         var items = [];
         $('#eateryList').html = '';
-        var linkString = '<li id="{0}"><a href="http://maps.google.com/?daddr={2},{3}">{1}</a> ({4} mi.)</li>';
+        var template = $('#collapsableTemplate').html();
+
         $.each(data, function (key, val) {
-            items.push(linkString.format(key,val.name,val.location.lat,val.location.lng,val.Distance.toFixed(2)));
+            items.push(template.format(val.name, val.Distance.toFixed(2), val.location.lat,val.location.lng, val.contact.phone));
         });
 
         $('#eateryList').html(items.join(''));
+        $('#eateryList .collapsible').collapsible();
 
     });
     }

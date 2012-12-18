@@ -17,6 +17,21 @@
 <h2>Powered By FourSquare</h2>
 <div class="editor-label">What kind of food are you in the mood for?</div>
 <div class="editor-field">@Html.DropDownList("foodStyle",Model.Categories, new {Multiple = "multiple"})</div>
-<ul id="eateryList">
-    <li>Waiting for location</li>
-</ul>
+<div id="eateryList" data-role="collapsible-set" data-mini="true">
+    <div data-role="collapsible" data-collapsed="false">
+        <h3>Awaiting Location...</h3>
+    </div>
+</div>
+
+<div data-role="collapsible-set" data-mini="true">
+<div id="collapsableTemplate" class="hidden">
+    <div class="collapsible" >
+        <h3>{0}</h3>
+        <p>
+            {1} mi.
+            <a href="http://maps.google.com/?daddr={2},{3}">Directions</a>
+            {4}
+        </p>
+    </div>
+</div>
+</div>

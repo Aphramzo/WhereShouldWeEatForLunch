@@ -64,6 +64,7 @@ namespace WhereShouldWeEatLunch.APIs
         public String name { get { return _venue.name; } }
         public String id { get { return _venue.id; } }
         public Location location { get { return _venue.location; } }
+        public Contact contact { get { return _venue.contact; } }
         private Venue _venue { get; set; }
         private double _currentLat { get; set; }
         private double _currentLong { get; set; }
