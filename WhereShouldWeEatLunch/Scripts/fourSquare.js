@@ -12,8 +12,17 @@ function loadFourSquareResults(categoryId) {
         $('#eateryList').html = '';
         var template = $('#collapsableTemplate').html();
 
+
         $.each(data, function (key, val) {
-            items.push(template.format(val.name, val.Distance.toFixed(2), val.location.lat,val.location.lng, val.contact.phone));
+            var phone = '';
+            var menuUrl = '';
+            if (val.contact) {
+                phone = val.contact.formattedPhone;
+            }
+            if (val.menu) {
+                menuUrl = '<a target="_blank" href="{0}">View Menu</a>'.format(val.menu.mobileUrl);
+            }
+            items.push(template.format(val.name, val.Distance.toFixed(2), val.location.lat, val.location.lng, phone, menuUrl));
         });
 
         $('#eateryList').html(items.join(''));
