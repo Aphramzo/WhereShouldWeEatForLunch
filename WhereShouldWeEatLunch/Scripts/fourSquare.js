@@ -11,7 +11,7 @@ function loadFourSquareResults(categoryId) {
         var items = [];
         $('#eateryList').html = '';
         var template = $('#collapsableTemplate').html();
-
+        //template = '<div class="collapsible" ><h3>{0}</h3><p><a href="http://maps.google.com/?daddr={2},{3}">Directions ({1} mi.)</a><br />{4}<br />{5}</p></div>';
 
         $.each(data, function (key, val) {
             var phone = '';
@@ -48,7 +48,7 @@ function success_callback(p) {
 }
 
 function showWaiting() {
-    $('#eateryList').html('<li>Reticulating Splines.... Please Wait</li>');
+    $('#eateryList').html('Reticulating Splines.... Please Wait');
 }
 
 function error_callback(p) {

@@ -21,10 +21,21 @@ namespace WhereShouldWeEatLunch.APIs
             var request = GetNonUserRequest("v2/venues/search");
             
             request.AddParameter("ll", String.Format("{0},{1}", lat, lon));
+            request.AddParameter("limit", 15);
+            
+            request.AddParameter("intent", "browse");
+
             if (!String.IsNullOrEmpty(categoryId) && categoryId != "0")
+            {
                 request.AddParameter("categoryId", categoryId);
+                request.AddParameter("radius", 16000); //widen the search if they are looking for something in particular
+            }
             else
+            {
                 request.AddParameter("categoryId", String.Join(",", GetFoodCategoryList()));
+                request.AddParameter("radius", 8000);
+            }
+                
             var response = client.Execute<FourSquareVenueResult>(request);
 
             var venues = response.Data.response.venues;
