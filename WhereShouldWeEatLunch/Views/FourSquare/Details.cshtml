@@ -8,14 +8,7 @@
     @section js
     {
         <script src="@Url.Content("~/Scripts/swipe.js")" type="text/javascript"></script>  
-        <script>
-            $(document).ready(function() {
-                window.mySwipe = new Swipe(
-                    document.getElementById('slider')
-                );
-            });
-            
-        </script> 
+        <script src="@Url.Content("~/Scripts/FourSquareDetail.js")" type="text/javascript"></script>  
     }
 </head>
 <body>
@@ -74,7 +67,7 @@
                 <br />
                 @if(!String.IsNullOrEmpty(tip.photourl))
                 {
-                    <img width="@(tip.photo.width/3)" src="@tip.photourl"/>
+                    <img width="@(tip.photo.width/2)" src="@tip.photourl"/>
                 }
                 
             </li>
