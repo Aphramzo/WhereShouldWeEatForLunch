@@ -40,6 +40,14 @@ namespace WhereShouldWeEatLunch.APIs.FourSquare
             venues.ForEach(x=>x.SetCurrentCoords(lat,lon));
             return venues;
         }
+        public static Venue GetVenue(string id)
+        {
+            var client = GetRestClient();
+            var request = GetNonUserRequest("v2/venues/{id}");
+            request.AddUrlSegment("id", id);
+            var response = client.Execute<VenueByIdResult>(request);
+            return response.Data.response.venue;
+        }
 
         private static RestRequest GetNonUserRequest(String endpoint)
         {
@@ -80,6 +88,16 @@ namespace WhereShouldWeEatLunch.APIs.FourSquare
 
     #region DTOs
 
+    internal class VenueByIdResult
+    {
+        public VenueByIdResponse response { get; set; }
+    }
+
+    internal class VenueByIdResponse
+    {
+        public Venue venue { get; set; }
+    }
+
     internal class VenueCategoriesResult
     {
         public VenueCategoriesResponse response { get; set; }
@@ -114,7 +132,9 @@ namespace WhereShouldWeEatLunch.APIs.FourSquare
         public Location location { get; set; }
         public VenueContact contact { get; set; }
         public VenueMenu menu { get; set; }
+        public Hours hours { get; set; }
         public String url { get; set; }
+        public double rating { get; set; }
         private double currentLat { get; set; }
         private double currentLong { get; set; }
 
@@ -149,6 +169,31 @@ namespace WhereShouldWeEatLunch.APIs.FourSquare
         public double lng { get; set; }
         public String address { get; set; }
         public String crossStreet { get; set; }
+    }
+
+    public class Hours
+    {
+        public bool isOpen { get; set; }
+        public String status { get; set; }
+        public List<TimeFrame> timeframes { get; set; } 
+    }
+
+    public class TimeFrame
+    {
+        public string days { get; set; }
+        public List<TimeFrameSegments> segments { get; set; }
+        public List<TimeFrameHours> open { get; set; } 
+    }
+
+    public class TimeFrameHours
+    {
+        public string renderedTime { get; set; }
+    }
+
+    public class TimeFrameSegments
+    {
+        public string renderedTime { get; set; }
+        public string label { get; set; }
     }
 
     public class VenueMenu

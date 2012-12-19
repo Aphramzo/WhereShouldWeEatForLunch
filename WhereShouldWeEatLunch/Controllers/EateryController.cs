@@ -116,32 +116,10 @@ namespace WhereShouldWeEatLunch.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult FourSquareList()
-        {
-            var categories = APIs.FourSquare.API.GetCategories();
-            categories.Add(new APIs.FourSquare.VenueCategory() { id = "0", name = "(anything)" });
-            var viewModel = new FourSquareViewModel() {Categories = categories.OrderBy(x => x.name).Select(c => new SelectListItem() { Value = c.id, Text = c.name, Selected = c.id == "0" })};
-            return View(viewModel);
-        }
-
-        public String FourSquareListByCoords()
-        {
-            var lat = Convert.ToDouble(Request.Params["lat"]);
-            var lon = Convert.ToDouble(Request.Params["long"]);
-            var eateriesNearHere = APIs.FourSquare.API.FindEateriesNearLatLong(lat, lon, Server.UrlDecode(Request.Params["categoryId"])).OrderBy(x=>x.Distance);
-            var json = new JavaScriptSerializer().Serialize(eateriesNearHere);
-            return json;
-        }
-
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
             base.Dispose(disposing);
         }
-    }
-
-    public class FourSquareViewModel
-    {
-        public IEnumerable<SelectListItem> Categories { get; set; } 
     }
 }

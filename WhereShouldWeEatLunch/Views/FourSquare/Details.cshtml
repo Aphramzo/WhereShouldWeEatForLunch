@@ -1,0 +1,58 @@
+﻿@model WhereShouldWeEatLunch.APIs.FourSquare.Venue
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@Model.name</title>
+</head>
+<body>
+    <h1><a href="@Model.url">@Model.name</a></h1>
+    <div>
+        @Html.LabelFor(x=>x.rating,"Address:")
+        @Html.DisplayFor(x=>x.location.address)    
+    </div>
+    <div>
+        @Html.LabelFor(x=>x.rating,"Rating:")
+        @Html.DisplayFor(x=>x.rating)    
+    </div>
+    @if(Model.hours != null)
+    {
+        <section id="hoursDetails">
+            <div>
+                @Html.DisplayFor(x => x.hours.status)
+            </div>   
+            <ul>
+                @foreach(var timeFrame in Model.hours.timeframes)
+                {
+                    <li>
+                        <span>@timeFrame.days</span>
+                        <ul>
+                        @foreach(var open in timeFrame.open)
+                        {
+                            
+                                <li>
+                                    <span>Open: @open.renderedTime</span>
+                                </li>
+                        }
+                        @foreach(var seg in timeFrame.segments)
+                        {
+                            
+                                <li>
+                                    <span>@seg.label: @seg.renderedTime</span>
+                                </li>
+                        }
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </section>
+    }
+    @if (Model.menu != null)
+    {
+        <div>
+            <a href="@Model.menu.mobileUrl">Menu</a>
+        </div>
+    }
+</body>
+</html>

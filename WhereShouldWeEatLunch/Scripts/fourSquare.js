@@ -3,7 +3,7 @@ var lon;
 
 function loadFourSquareResults(categoryId) {
     showWaiting();
-    $.getJSON('/eatery/FourSquareListByCoords', {
+    $.getJSON('/FourSquare/FourSquareListByCoords', {
         lat: lat,
         long: lon,
         categoryId: categoryId
@@ -22,7 +22,7 @@ function loadFourSquareResults(categoryId) {
             if (val.menu) {
                 menuUrl = '<a target="_blank" href="{0}">View Menu</a>'.format(val.menu.mobileUrl);
             }
-            items.push(template.format(val.name, val.Distance.toFixed(2), val.location.lat, val.location.lng, phone, menuUrl));
+            items.push(template.format(val.name, val.Distance.toFixed(2), val.location.lat, val.location.lng, phone, menuUrl, val.id));
         });
 
         $('#eateryList').html(items.join(''));

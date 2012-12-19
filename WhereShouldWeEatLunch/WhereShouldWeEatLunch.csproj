@@ -84,12 +84,14 @@
     <Compile Include="APIs\Yelp.cs" />
     <Compile Include="Controllers\EateryController.cs" />
     <Compile Include="Controllers\FoodStyleController.cs" />
+    <Compile Include="Controllers\FourSquareController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\EateryModel.cs" />
     <Compile Include="Models\FoodStyleModel.cs" />
+    <Compile Include="Models\FourSquareViewModel.cs" />
     <Compile Include="Models\WhereShouldWeEatLunchContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -232,7 +234,10 @@
     <Content Include="Views\Shared\_MobileLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Eatery\FourSquareList.cshtml" />
+    <Content Include="Views\FourSquare\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\FourSquare\Details.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
