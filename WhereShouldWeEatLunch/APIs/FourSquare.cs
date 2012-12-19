@@ -139,6 +139,8 @@ namespace WhereShouldWeEatLunch.APIs.FourSquare
         {
             get
             {
+                if(tips == null) return new List<Tip>();
+
                 var alltips = new List<Tip>();
                 foreach(var group in tips.groups)
                 {
