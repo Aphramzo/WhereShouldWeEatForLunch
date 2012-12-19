@@ -118,8 +118,8 @@ namespace WhereShouldWeEatLunch.Controllers
 
         public ActionResult FourSquareList()
         {
-            var categories = APIs.FourSquare.GetCategories();
-            categories.Add(new APIs.FourSquareVenueCategory() { id = "0", name = "(anything)" });
+            var categories = APIs.FourSquare.API.GetCategories();
+            categories.Add(new APIs.FourSquare.VenueCategory() { id = "0", name = "(anything)" });
             var viewModel = new FourSquareViewModel() {Categories = categories.OrderBy(x => x.name).Select(c => new SelectListItem() { Value = c.id, Text = c.name, Selected = c.id == "0" })};
             return View(viewModel);
         }
@@ -128,7 +128,7 @@ namespace WhereShouldWeEatLunch.Controllers
         {
             var lat = Convert.ToDouble(Request.Params["lat"]);
             var lon = Convert.ToDouble(Request.Params["long"]);
-            var eateriesNearHere = APIs.FourSquare.FindEateriesNearLatLong(lat, lon, Server.UrlDecode(Request.Params["categoryId"])).OrderBy(x=>x.Distance);
+            var eateriesNearHere = APIs.FourSquare.API.FindEateriesNearLatLong(lat, lon, Server.UrlDecode(Request.Params["categoryId"])).OrderBy(x=>x.Distance);
             var json = new JavaScriptSerializer().Serialize(eateriesNearHere);
             return json;
         }

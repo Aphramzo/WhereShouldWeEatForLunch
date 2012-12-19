@@ -7,13 +7,13 @@ using System.Web;
 using RestSharp;
 using RestSharp.Authenticators;
 
-namespace WhereShouldWeEatLunch.APIs
+namespace WhereShouldWeEatLunch.APIs.FourSquare
 {
-    public  class FourSquare : RESTfulAPI
+    public  class API : RESTfulAPI
     {
         public const String FoodCategoryId = "4d4b7105d754a06374d81259";
 
-        public static List<FourSquareVenue> FindEateriesNearLatLong(double lat, double lon, String categoryId)
+        public static List<Venue> FindEateriesNearLatLong(double lat, double lon, String categoryId)
         {
             var client = GetRestClient();
             var request = GetNonUserRequest("v2/venues/search");
@@ -34,7 +34,7 @@ namespace WhereShouldWeEatLunch.APIs
                 request.AddParameter("radius", 8000);
             }
                 
-            var response = client.Execute<FourSquareVenueResult>(request);
+            var response = client.Execute<VenueResult>(request);
 
             var venues = response.Data.response.venues;
             venues.ForEach(x=>x.SetCurrentCoords(lat,lon));
@@ -63,11 +63,11 @@ namespace WhereShouldWeEatLunch.APIs
             return foodCats.Select(v => v.id).ToList();
         }
 
-        public static List<FourSquareVenueCategory> GetCategories()
+        public static List<VenueCategory> GetCategories()
         {
             var client = GetRestClient();
             var request = GetNonUserRequest("v2/venues/categories");
-            var response = client.Execute<FourSquareVenueCategoriesResult>(request);
+            var response = client.Execute<VenueCategoriesResult>(request);
 
             return response.Data.response.categories.Where(x=>x.id ==FoodCategoryId).Select(c=>c.categories).First();
         }
@@ -79,38 +79,41 @@ namespace WhereShouldWeEatLunch.APIs
     }
 
     #region DTOs
-    class FourSquareVenueCategoriesResult
+
+    internal class VenueCategoriesResult
     {
-        public FourSquareVenueCategoriesResponse response { get; set; }
+        public VenueCategoriesResponse response { get; set; }
     }
 
-    class FourSquareVenueCategoriesResponse
+    internal class VenueCategoriesResponse
     {
-        public List<FourSquareVenueCategory> categories { get; set; } 
-    }
-    class FourSquareVenueResult
-    {
-        public FourSquareVenueResultResponse response { get; set; }
-    }
-    class FourSquareVenueResultResponse
-    {
-        public List<FourSquareVenue> venues { get; set; }
+        public List<VenueCategory> categories { get; set; }
     }
 
-    public class FourSquareVenueCategory
+    internal class VenueResult
+    {
+        public VenueResultResponse response { get; set; }
+    }
+
+    internal class VenueResultResponse
+    {
+        public List<Venue> venues { get; set; }
+    }
+
+    public class VenueCategory
     {
         public string id { get; set; }
         public string name { get; set; }
-        public List<FourSquareVenueCategory> categories { get; set; } 
+        public List<VenueCategory> categories { get; set; }
     }
 
-    public class FourSquareVenue
+    public class Venue
     {
         public String name { get; set; }
         public String id { get; set; }
-        public FourSquareLocation location { get; set; }
-        public FourSquareVenueContact contact { get; set; }
-        public FourSquareVenueMenu menu { get; set; }
+        public Location location { get; set; }
+        public VenueContact contact { get; set; }
+        public VenueMenu menu { get; set; }
         public String url { get; set; }
         private double currentLat { get; set; }
         private double currentLong { get; set; }
@@ -134,13 +137,13 @@ namespace WhereShouldWeEatLunch.APIs
         }
     }
 
-    public class FourSquareVenueContact
+    public class VenueContact
     {
         public String formattedPhone { get; set; }
         public String phone { get; set; }
     }
 
-    public class FourSquareLocation
+    public class Location
     {
         public double lat { get; set; }
         public double lng { get; set; }
@@ -148,14 +151,11 @@ namespace WhereShouldWeEatLunch.APIs
         public String crossStreet { get; set; }
     }
 
-    public class FourSquareVenueMenu
+    public class VenueMenu
     {
         public String mobileUrl { get; set; }
         public String url { get; set; }
     }
+
     #endregion
-
-
-    
-    
-} ;
+};
