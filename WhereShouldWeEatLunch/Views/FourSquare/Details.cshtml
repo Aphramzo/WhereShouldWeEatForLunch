@@ -9,8 +9,7 @@
 <body>
     <h1><a href="@Model.url">@Model.name</a></h1>
     <div>
-        @Html.LabelFor(x=>x.rating,"Address:")
-        @Html.DisplayFor(x=>x.location.address)    
+        <a href="http://maps.google.com/?daddr=@Model.location.lat,@Model.location.lng">@Model.location.address</a>
     </div>
     <div>
         @Html.LabelFor(x=>x.rating,"Rating:")
