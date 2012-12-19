@@ -71,9 +71,10 @@
         {
             <li>
                 @tip.text
+                <br />
                 @if(!String.IsNullOrEmpty(tip.photourl))
                 {
-                    <img src="@tip.photourl"/>
+                    <img width="@(tip.photo.width/3)" src="@tip.photourl"/>
                 }
                 
             </li>
