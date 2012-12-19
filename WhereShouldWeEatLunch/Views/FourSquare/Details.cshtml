@@ -9,9 +9,12 @@
     {
         <script src="@Url.Content("~/Scripts/swipe.js")" type="text/javascript"></script>  
         <script>
-            window.mySwipe = new Swipe(
-                document.getElementById('slider')
-            );
+            $(document).ready(function() {
+                window.mySwipe = new Swipe(
+                    document.getElementById('slider')
+                );
+            });
+            
         </script> 
     }
 </head>
