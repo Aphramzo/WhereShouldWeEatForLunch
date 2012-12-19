@@ -133,6 +133,21 @@ namespace WhereShouldWeEatLunch.APIs.FourSquare
         public VenueContact contact { get; set; }
         public VenueMenu menu { get; set; }
         public Hours hours { get; set; }
+        public Photos photos { get; set; }
+        public Tips tips { get; set; }
+        public List<Tip> allTips
+        {
+            get
+            {
+                var alltips = new List<Tip>();
+                foreach(var group in tips.groups)
+                {
+                    group.items.ForEach(alltips.Add);
+                }
+                return alltips;
+            }
+        } 
+        public Likes likes { get; set; }
         public String url { get; set; }
         public double rating { get; set; }
         private double currentLat { get; set; }
@@ -200,6 +215,72 @@ namespace WhereShouldWeEatLunch.APIs.FourSquare
     {
         public String mobileUrl { get; set; }
         public String url { get; set; }
+    }
+
+    public class Photos
+    {
+        public int count { get; set; }
+        public List<PhotoGroups> groups { get; set; }
+    }
+
+    public class PhotoGroups
+    {
+        public String type { get; set; }
+        public String name { get; set; }
+        public int count { get; set; }
+        public List<Photo> items { get; set; } 
+    }
+
+    public class Photo
+    {
+        public string id { get; set; }
+        public String prefix { get; set; }
+        public String suffix { get; set; }
+        public int width { get; set;}
+        public int height { get; set; }
+        public String url { get { return prefix + suffix; } }
+    }
+
+    public class Tips
+    {
+        public int count { get; set; }
+        public List<TipGroups> groups { get; set; } 
+    }
+
+    public class TipGroups
+    {
+        public String type { get; set; }
+        public String name { get; set; }
+        public int count { get; set; }
+        public List<Tip> items { get; set; } 
+    }
+
+    public class Tip
+    {
+        public String id { get; set; }
+        public String text { get; set; }
+        public Photo photo { get; set; }
+        public String photourl { get; set; }
+        public Likes likes { get; set; }
+    }
+
+    public class Likes
+    {
+        public int count { get; set; }
+        public String summary { get; set; }
+        public List<LikeGroups> groups { get; set; } 
+    }
+
+    public class LikeGroups
+    {
+        public String type { get; set; }
+        public int count { get; set; }
+        public List<Like> items { get; set; } 
+    }
+
+    public class Like
+    {
+        public String id { get; set; }
     }
 
     #endregion

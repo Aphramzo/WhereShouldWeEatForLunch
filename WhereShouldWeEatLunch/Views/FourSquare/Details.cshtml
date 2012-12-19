@@ -5,6 +5,15 @@
 <html>
 <head>
     <title>@Model.name</title>
+    @section js
+    {
+        <script src="@Url.Content("~/Scripts/swipe.js")" type="text/javascript"></script>  
+        <script>
+            window.mySwipe = new Swipe(
+                document.getElementById('slider')
+            );
+        </script> 
+    }
 </head>
 <body>
     <h1><a href="@Model.url">@Model.name</a></h1>
@@ -53,5 +62,20 @@
             <a href="@Model.menu.mobileUrl">Menu</a>
         </div>
     }
+    <div id="slider">
+        <ul>
+        @foreach(var tip in Model.allTips.OrderByDescending(x=>x.likes.count).Take(5))
+        {
+            <li>
+                @tip.text
+                @if(!String.IsNullOrEmpty(tip.photourl))
+                {
+                    <img src="@tip.photourl"/>
+                }
+                
+            </li>
+        }
+        </ul>
+    </div>
 </body>
 </html>
