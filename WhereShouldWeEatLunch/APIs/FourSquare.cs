@@ -4,8 +4,6 @@ using System.Configuration;
 using System.Device.Location;
 using System.Linq;
 using System.Web;
-using Igloo.SharpSquare.Core;
-using Igloo.SharpSquare.Entities;
 using RestSharp;
 using RestSharp.Authenticators;
 
@@ -61,22 +59,17 @@ namespace WhereShouldWeEatLunch.APIs
 
         private static List<String> GetFoodCategoryList()
         {
-            SharpSquare sharpSquare = new SharpSquare(ConfigurationManager.AppSettings["fourSquareClientId"], ConfigurationManager.AppSettings["fourSquareClientSecret"]);
-            var foodCats = GetCategories(sharpSquare);
-            return foodCats.Select(v=>v.id).ToList();
+            var foodCats = GetCategories();
+            return foodCats.Select(v => v.id).ToList();
         }
 
-        private static List<Category> GetCategories(SharpSquare sharpSquare)
+        public static List<FourSquareVenueCategory> GetCategories()
         {
-            var cats = sharpSquare.GetVenueCategories();
-            var foodCats = cats.Where(x => x.id == FoodCategoryId).Select(c => c.categories).First();
-            return foodCats;
-        }
+            var client = GetRestClient();
+            var request = GetNonUserRequest("v2/venues/categories");
+            var response = client.Execute<FourSquareVenueCategoriesResult>(request);
 
-        public static List<Category> GetCategories()
-        {
-            SharpSquare sharpSquare = new SharpSquare(ConfigurationManager.AppSettings["fourSquareClientId"], ConfigurationManager.AppSettings["fourSquareClientSecret"]);
-            return GetCategories(sharpSquare);
+            return response.Data.response.categories.Where(x=>x.id ==FoodCategoryId).Select(c=>c.categories).First();
         }
 
         public static object FindEateriesNearLatLong(double lat, double lon)
@@ -86,6 +79,15 @@ namespace WhereShouldWeEatLunch.APIs
     }
 
     #region DTOs
+    class FourSquareVenueCategoriesResult
+    {
+        public FourSquareVenueCategoriesResponse response { get; set; }
+    }
+
+    class FourSquareVenueCategoriesResponse
+    {
+        public List<FourSquareVenueCategory> categories { get; set; } 
+    }
     class FourSquareVenueResult
     {
         public FourSquareVenueResultResponse response { get; set; }
@@ -93,6 +95,13 @@ namespace WhereShouldWeEatLunch.APIs
     class FourSquareVenueResultResponse
     {
         public List<FourSquareVenue> venues { get; set; }
+    }
+
+    public class FourSquareVenueCategory
+    {
+        public string id { get; set; }
+        public string name { get; set; }
+        public List<FourSquareVenueCategory> categories { get; set; } 
     }
 
     public class FourSquareVenue

@@ -43,10 +43,6 @@
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
-    <Reference Include="SharpSquare, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\SharpSquare.dll</HintPath>
-    </Reference>
     <Reference Include="SquishIt.Framework, Version=0.8.6.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\SquishIt.Framework.dll</HintPath>
@@ -141,7 +137,6 @@
     <Content Include="lib\jurassic-license.txt" />
     <Content Include="lib\Jurassic.dll" />
     <Content Include="lib\Newtonsoft.Json.dll" />
-    <Content Include="lib\SharpSquare.dll" />
     <Content Include="lib\squishit-license.txt" />
     <Content Include="lib\SquishIt.Framework.dll" />
     <Content Include="lib\SquishIt.Framework.pdb" />

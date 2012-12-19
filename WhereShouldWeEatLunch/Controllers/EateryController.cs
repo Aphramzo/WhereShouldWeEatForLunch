@@ -119,7 +119,7 @@ namespace WhereShouldWeEatLunch.Controllers
         public ActionResult FourSquareList()
         {
             var categories = APIs.FourSquare.GetCategories();
-            categories.Add(new Igloo.SharpSquare.Entities.Category() { id = "0", name = "(anything)" });
+            categories.Add(new APIs.FourSquareVenueCategory() { id = "0", name = "(anything)" });
             var viewModel = new FourSquareViewModel() {Categories = categories.OrderBy(x => x.name).Select(c => new SelectListItem() { Value = c.id, Text = c.name, Selected = c.id == "0" })};
             return View(viewModel);
         }
