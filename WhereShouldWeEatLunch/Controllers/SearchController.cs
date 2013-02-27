@@ -14,7 +14,7 @@ namespace WhereShouldWeEatLunch.Controllers
         public List<EateryModel> Eateries { get; set; }
         public EateryModel SuggestedEatery { get; set; }
     }
-    public class SearchController : Controller
+    public class SearchController : BaseController
     {
         //
         // GET: /Search/

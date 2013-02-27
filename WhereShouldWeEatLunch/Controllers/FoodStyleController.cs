@@ -9,7 +9,7 @@ using WhereShouldWeEatLunch.Models;
 
 namespace WhereShouldWeEatLunch.Controllers
 { 
-    public class FoodStyleController : Controller
+    public class FoodStyleController : BaseController
     {
         private WhereShouldWeEatLunchContext db = new WhereShouldWeEatLunchContext();
 

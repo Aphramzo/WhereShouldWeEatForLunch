@@ -1,0 +1,33 @@
+﻿@model WhereShouldWeEatLunch.Models.EateryModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>EateryyModel</legend>
+
+    <div class="display-label">
+        @Html.LabelFor(model=>model.IsWalkingDistance)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsWalkingDistance)
+    </div>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+    <div class="display-label">
+        @Html.LabelFor(model=>model.FoodStyleModel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FoodStyleModel.Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

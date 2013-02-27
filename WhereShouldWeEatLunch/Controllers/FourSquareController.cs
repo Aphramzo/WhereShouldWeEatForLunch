@@ -8,7 +8,7 @@ using WhereShouldWeEatLunch.Models;
 
 namespace WhereShouldWeEatLunch.Controllers
 {
-    public class FourSquareController : Controller
+    public class FourSquareController : BaseController
     {
         //
         // GET: /FourSquare/

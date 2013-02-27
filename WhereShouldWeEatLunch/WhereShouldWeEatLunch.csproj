@@ -36,6 +36,13 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MobileViewEngines.MVC3">
+      <HintPath>..\packages\MobileViewEngines.2.0.0\lib\net40\MobileViewEngines.MVC3.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Newtonsoft.Json.dll</HintPath>
@@ -71,6 +78,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
     <Reference Include="YelpSharp, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\YelpSharp.dll</HintPath>
@@ -82,10 +92,13 @@
     <Compile Include="APIs\OAuthBase.cs" />
     <Compile Include="APIs\RESTfulAPI.cs" />
     <Compile Include="APIs\Yelp.cs" />
+    <Compile Include="App_Start\MobileViewEnginesBootstrapper.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\EateryController.cs" />
     <Compile Include="Controllers\FoodStyleController.cs" />
     <Compile Include="Controllers\FourSquareController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\ViewSwitcherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -244,6 +257,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\FourSquare\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\ViewSwitcher.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Eatery\Details.Mobile.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
