@@ -5,19 +5,28 @@
         <title>@ViewBag.Title</title>
         <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
         <link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
+        
+        <!-- temp for ColorTest pages -->
+        @{
+            if(ViewBag.Title.Contains("Color Test 1")) {
+                <link href="@Url.Content("~/Content/ColorTest1.css")" rel="stylesheet" type="text/css" />
+            }
+            else if(ViewBag.Title.Contains("Color Test 2")) {
+                <link href="@Url.Content("~/Content/ColorTest2.css")" rel="stylesheet" type="text/css" />
+            }
+            <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css' />
+        }
+        <!-- end ColorTest includes -->
+
     </head>
     <body>
-        <nav data-role="navbar">
+        <nav id="nav" data-role="navbar">
             <ul>
-                <li>
-                    @Html.ActionLink("Home", "Index","FourSquare")
-                </li>
-                <li>
-                    @Html.ActionLink("Eateries", "Index","Eatery")
-                </li>
-                <li>
-                    @Html.ActionLink("Styles", "Index","FoodStyle")
-                </li>
+                <li>@Html.ActionLink("Home", "Index", "FourSquare")</li>
+                <li>@Html.ActionLink("Eateries", "Index", "Eatery")</li>
+                <li>@Html.ActionLink("Styles", "Index", "FoodStyle")</li>
+                <li>@Html.ActionLink("Color Test Purblue", "ColorTest1", "ColorTest")</li>
+                <li>@Html.ActionLink("Color Test Dunno", "ColorTest2", "ColorTest")</li>
             </ul>
         </nav>
         <section id="body">
@@ -26,6 +35,7 @@
         
     </body>
 </html>
+
 @MvcHtmlString.Create(
         Bundle.JavaScript()
         .Add("/Scripts/jquery-1.5.1.min.js")
@@ -34,4 +44,4 @@
         .Add("/Scripts/modernizr-1.7.min.js")
         .Render("/Scripts/combine.js")
     )
-    @RenderSection("js", false)
+@RenderSection("js", false)

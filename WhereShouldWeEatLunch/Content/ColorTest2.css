@@ -1,0 +1,146 @@
+﻿/*
+    http://www.colourlovers.com/palette/2719150/Giggity
+    white:FCFCFC orange:FF6D05 green:39B309 blue:0089B3 purple:30006B
+*/
+
+#nav { display: none; }
+
+#body {
+    /* clear Site.css values */
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    float: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;    
+    background: #FCFCFC url(images/mapTransBg.png);
+    color: #30006B;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+header {
+    overflow: auto;
+}
+footer {
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 0;
+    border-top: 1px dotted #fcfcfc;
+}
+footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+footer ul li {
+    display: inline;
+    margin: 0 10px;
+}
+.content {
+    overflow: auto;
+    background: #0089B3;
+    border: 2px solid #30006B;
+
+    margin: 30px 20px;
+    border-radius: 15px;
+    color: #fcfcfc;
+}
+.contentInner {
+    border: 3px solid #fcfcfc;
+    padding: 0 20px;
+    margin: 0;
+}
+.contentAlt {
+    overflow: auto;
+    background: #30006B;
+    border: 5px solid #0089B3;
+    padding: 0 20px;
+    margin: 30px 20px;
+    border-radius: 15px;
+    color: #fcfcfc;
+}
+.contentAlt2 {
+    overflow: auto;
+    background: #FF6D05;
+    border: 5px solid #0089B3;
+    padding: 0 20px;
+    margin: 30px 20px;
+    border-radius: 15px;
+    color: #fcfcfc;
+}
+.contentAlt2 .action {
+    background: #39B309;
+}
+.contentAlt2 .button {
+    background: #0089B3;
+}
+.contentAlt3 {
+    overflow: auto;
+    background: #39B309;
+    border: 5px solid #30006B;
+    padding: 0 20px;
+    margin: 30px 20px;
+    border-radius: 15px;
+    color: #fcfcfc;
+}
+.contentAlt3 .action {
+    background: #0089B3;
+}
+.contentAlt3 .button {
+    background: #FF6D05;
+}
+#logo3 {
+    background: url(images/logo.png);
+    width: 305px;
+    height: 334px;
+    float: left;
+    margin: 20px;
+}
+#logo2 {
+    background: url(images/logo2.png);
+    width: 333px;
+    height: 334px;
+    float: left;
+    margin: 20px;
+}
+#logo {
+    background: url(images/logo3.png);
+    width: 333px;
+    height: 334px;
+    float: left;
+    margin: 20px;
+}
+#main {
+}
+.button {
+    float: right;
+    padding: 5px 10px;
+    margin: 10px;
+    background: #39B309;
+    border: 2px solid #FCFCFC;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px #004593; /* horiz vert blur spread color inset */
+}
+.action {
+    float: right;
+    padding: 5px 10px;
+    margin: 10px;
+    background: #FF6D05;
+    border: 2px solid #FCFCFC;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px #004593; /* horiz vert blur spread color inset */
+}
+
+
+@media screen and (max-width:480px)
+{
+}
+@media screen and (max-width:1024px)
+{
+}
+@media screen and (min-width:1280px)
+{
+}

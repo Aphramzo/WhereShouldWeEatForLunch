@@ -1,0 +1,108 @@
+﻿/*
+    http://www.colourlovers.com/palette/2719150/Giggity
+    white:FCFCFC orange:FF6D05 green:39B309 blue:0089B3 purple:30006B
+*/
+
+#nav { display: none; }
+
+#body {
+    /* clear Site.css values */
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    float: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #30006B url(images/mapBg.jpg);
+    color: #FCFCFC;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+header {
+    overflow: auto;
+}
+footer {
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 0;
+    border-top: 1px dotted #fcfcfc;
+}
+footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+footer ul li {
+    display: inline;
+    margin: 0 10px;
+}
+footer a {
+    text-decoration: none;
+    color: #fcfcfc;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+.content {
+    overflow: auto;
+    background: #0089B3;
+    border: 5px solid #FCFCFC;
+    padding: 0 20px;
+    margin: 30px 20px;
+    border-radius: 15px;
+}
+#logo3 {
+    background: url(images/logo.png);
+    width: 305px;
+    height: 334px;
+    float: left;
+    margin: 20px;
+}
+#logo2 {
+    background: url(images/logo2.png);
+    width: 333px;
+    height: 334px;
+    float: left;
+    margin: 20px;
+}
+#logo {
+    background: url(images/logo3.png);
+    width: 333px;
+    height: 334px;
+    float: left;
+    margin: 20px;
+}
+#main {
+}
+.button {
+    float: right;
+    padding: 5px 10px;
+    margin: 10px;
+    background: #39B309;
+    border: 2px solid #FCFCFC;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px #004593; /* horiz vert blur spread color inset */
+}
+.action {
+    float: right;
+    padding: 5px 10px;
+    margin: 10px;
+    background: #FF6D05;
+    border: 2px solid #FCFCFC;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px #004593; /* horiz vert blur spread color inset */
+}
+
+
+@media screen and (max-width:480px)
+{
+}
+@media screen and (max-width:1024px)
+{
+}
+@media screen and (min-width:1280px)
+{
+}
