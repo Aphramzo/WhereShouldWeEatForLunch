@@ -22,5 +22,9 @@ namespace WhereShouldWeEatLunch.Models
         public DbSet<FoodStyleModel> FoodStyleModels { get; set; }
 
         public DbSet<EateryModel> EateryModels { get; set; }
+
+        public DbSet<UserModel> UserModels { get; set; }
+
+        public DbSet<CrewModel> CrewModels { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace WhereShouldWeEatLunch.Controllers
 { 
     public class FoodStyleController : BaseController
     {
-        private WhereShouldWeEatLunchContext db = new WhereShouldWeEatLunchContext();
+        protected WhereShouldWeEatLunchContext db = new WhereShouldWeEatLunchContext();
 
         //
         // GET: /Default1/

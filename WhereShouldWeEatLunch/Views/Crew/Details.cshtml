@@ -1,0 +1,12 @@
+﻿@model WhereShouldWeEatLunch.Models.CrewModel
+
+<h2>@Model.Name</h2>
+
+Owner: @Model.UserModel.FirstName @Model.UserModel.LastName
+
+<br/><br/>
+People in this crew:
+@foreach(var member in Model.CrewMembers)
+{
+    <p>@member.UserModel.FirstName @member.UserModel.LastName</p>
+}

@@ -1,0 +1,48 @@
+﻿@model System.Collections.Generic.List<WhereShouldWeEatLunch.Models.UserModel>
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Users</title>
+    </head>
+    <body>
+        
+<table data-role="table" id="myTable" data-mode="reflow"  border="1" cellpadding="3">
+    <tr>
+        <th>
+            Name 
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Crews
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailAddress)
+        </td>
+        <td>
+            @foreach(var crew in item.CrewModels)
+            {
+                @Html.ActionLink(crew.Name,"Details","CrewController")
+                <br/>
+            }
+        </td>
+    
+    </tr>
+}
+
+</table>
+
+    </body>
+</html>
