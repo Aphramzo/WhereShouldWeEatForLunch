@@ -1,0 +1,20 @@
+﻿@model WhereShouldWeEatLunch.Models.UserModel
+
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.LabelFor(m => m.EmailAddress)
+            @Html.EditorFor(m => m.EmailAddress)
+            <br />
+            <br />
+            @Html.LabelFor(m => m.FirstName)
+            @Html.EditorFor(m => m.FirstName)
+            <br />
+            <br />
+            @Html.LabelFor(m => m.LastName)
+            @Html.EditorFor(m => m.LastName)
+
+            <br/><br/>
+            <input type="submit" value="Sign Up" />
+        }

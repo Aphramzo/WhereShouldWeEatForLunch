@@ -17,6 +17,25 @@ namespace WhereShouldWeEatLunch.Controllers
             return View(db.UserModels.ToList());
         }
 
+        public ActionResult SignUp()
+        {
+
+            return View("Create");
+        }
+
+        [HttpPost]
+        public ActionResult SignUp(UserModel userModel)
+        {
+            if (ModelState.IsValid)
+            {
+                db.UserModels.Add(userModel);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View("Create",userModel);
+        }
+
         //
        
     }
