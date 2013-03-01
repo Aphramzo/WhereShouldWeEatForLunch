@@ -14,8 +14,6 @@ namespace WhereShouldWeEatLunch.Helpers
         [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
         public class EmailAddressValidAndAvailable : DataTypeAttribute
         {
-            private readonly Regex regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", RegexOptions.Compiled);
-
             public EmailAddressValidAndAvailable()
                 : base(DataType.EmailAddress)
             {
@@ -26,11 +24,7 @@ namespace WhereShouldWeEatLunch.Helpers
             {
 
                 string str = Convert.ToString(value, CultureInfo.CurrentCulture);
-                if (string.IsNullOrEmpty(str))
-                    return true;
-
-                Match match = regex.Match(str);
-                var valid = ((match.Success && (match.Index == 0)) && (match.Length == str.Length));
+                var valid = IsValidEmail(str);
                 ErrorMessage = "Please enter a valid email address.";
                 if(!valid)
                     return false;
@@ -47,6 +41,16 @@ namespace WhereShouldWeEatLunch.Helpers
 
                 return user == null;
             }
+        }
+
+        public static bool IsValidEmail(string str)
+        {
+             var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", RegexOptions.Compiled);
+            if (string.IsNullOrEmpty(str))
+                return true;
+
+            Match match = regex.Match(str);
+            return ((match.Success && (match.Index == 0)) && (match.Length == str.Length));
         }
     }
 }

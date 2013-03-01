@@ -48,12 +48,12 @@ namespace WhereShouldWeEatLunch.Controllers
             {
                 db.FoodStyleModels.Add(foodstylemodel);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
             }
 
             return View(foodstylemodel);
         }
-        
+
         //
         // GET: /Default1/Edit/5
  
