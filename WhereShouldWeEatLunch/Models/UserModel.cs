@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
-using System.Web.Mvc;
 using WhereShouldWeEatLunch.Helpers;
 
 namespace WhereShouldWeEatLunch.Models
@@ -24,5 +22,7 @@ namespace WhereShouldWeEatLunch.Models
         public String EmailAddress { get; set; }
 
         public virtual List<CrewModel> CrewModels { get; set; }
+
+        public virtual List<LunchAppointment> LunchAppointments { get; set; } 
     }
 }

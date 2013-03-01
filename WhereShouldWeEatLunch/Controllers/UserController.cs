@@ -39,6 +39,30 @@ namespace WhereShouldWeEatLunch.Controllers
        
 
         //
-       
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(UserModel userModel)
+        {
+            var user = db.UserModels.FirstOrDefault(c => c.EmailAddress == userModel.EmailAddress);
+            if(user != null)
+            {
+                Session["User"] = user;
+                Session["UserName"] = user.FirstName;
+                return RedirectToAction("Index", "FourSquare");
+            }
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session["User"] = null;
+            Session["UserName"] = null;
+            return RedirectToAction("Index", "FourSquare");
+        }
     }
 }
