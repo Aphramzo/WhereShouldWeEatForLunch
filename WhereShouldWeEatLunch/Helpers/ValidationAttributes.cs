@@ -34,7 +34,7 @@ namespace WhereShouldWeEatLunch.Helpers
                 ErrorMessage = "Please enter a valid email address.";
                 if(!valid)
                     return false;
-                ErrorMessage = String.Format("The user {0} already exists.",str);
+                ErrorMessage = Stringasdf.Format("The user {0} already exists.",str);
                 return UserExists(str);
             }
 
