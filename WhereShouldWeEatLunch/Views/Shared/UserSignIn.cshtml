@@ -1,0 +1,9 @@
+﻿@if(Session["User"] == null)
+{
+    @Html.ActionLink("Sign In","Login","User")
+}
+else
+{
+    <p>Welcome back @Session["UserName"]</p>
+    <p>@Html.ActionLink("Logout","Logout","User")</p>
+}

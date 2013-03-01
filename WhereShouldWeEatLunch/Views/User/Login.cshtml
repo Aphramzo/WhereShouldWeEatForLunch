@@ -1,0 +1,10 @@
+﻿@model WhereShouldWeEatLunch.Models.UserModel
+
+Login Times
+
+ @using (Html.BeginForm())
+ {
+     @Html.LabelFor(m=>m.EmailAddress)
+     @Html.EditorFor(m=>m.EmailAddress)
+     <input type="submit" value="Login" class="button"/>
+ }
