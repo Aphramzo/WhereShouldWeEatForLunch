@@ -13,16 +13,20 @@ function loadFourSquareResults(categoryId) {
         var template = $('#collapsableTemplate').html();
         //template = '<div class="collapsible" ><h3>{0}</h3><p><a href="http://maps.google.com/?daddr={2},{3}">Directions ({1} mi.)</a><br />{4}<br />{5}</p></div>';
 
-        $.each(data, function (key, val) {
+        $.each(data.Eateries, function (key, val) {
             var phone = '';
             var menuUrl = '';
+            var linkToEatHere = '';
             if (val.contact) {
                 phone = val.contact.formattedPhone;
             }
             if (val.menu) {
                 menuUrl = '<a target="_blank" href="{0}">View Menu</a>'.format(val.menu.mobileUrl);
             }
-            items.push(template.format(val.name, val.Distance.toFixed(2), val.location.lat, val.location.lng, phone, menuUrl, val.id));
+            if (data.LoggedIn) {
+                linkToEatHere = '<a href="/LunchAppointment/LetsDoLunchHere?fourSquareId={6}">Lets have lunch here</a>'.format(val.id);
+            }
+            items.push(template.format(val.name, val.Distance.toFixed(2), val.location.lat, val.location.lng, phone, menuUrl, val.id, linkToEatHere));
         });
 
         $('#eateryList').html(items.join(''));

@@ -6,6 +6,9 @@ namespace WhereShouldWeEatLunch.Controllers
     public class BaseController : Controller
     {
         
-
+        public bool IsLoggedIn()
+        {
+            return Session["User"] != null;
+        }
     }
 }

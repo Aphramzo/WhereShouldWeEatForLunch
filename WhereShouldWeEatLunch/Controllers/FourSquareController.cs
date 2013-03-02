@@ -26,8 +26,20 @@ namespace WhereShouldWeEatLunch.Controllers
             var lat = Convert.ToDouble(Request.Params["lat"]);
             var lon = Convert.ToDouble(Request.Params["long"]);
             var eateriesNearHere = APIs.FourSquare.API.FindEateriesNearLatLong(lat, lon, Server.UrlDecode(Request.Params["categoryId"])).OrderBy(x => x.Distance);
-            var json = new JavaScriptSerializer().Serialize(eateriesNearHere);
+            var loggedIn = IsLoggedIn();
+            var bananaTime = new BananaTime()
+                                 {
+                                     Eateries = eateriesNearHere,
+                                     LoggedIn = loggedIn
+                                 };
+            var json = new JavaScriptSerializer().Serialize(bananaTime);
             return json;
+        }
+
+        class BananaTime
+        {
+            public IOrderedEnumerable<APIs.FourSquare.Venue> Eateries { get; set; }
+            public bool LoggedIn { get; set; } 
         }
 
         //
